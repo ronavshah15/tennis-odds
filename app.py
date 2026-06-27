@@ -59,4 +59,4 @@ if st.button("Get Odds") and api_key and match_input:
         with col1:
             st.metric(label=data['p1_name'], value=f"odds {p1_odds}", delta=f"{p1_prob}% chance")
         with col2:
-            st.metric(label=data['p2_name'],
+            st.metric(label=data['p2_name'],)
