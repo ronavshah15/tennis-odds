@@ -29,7 +29,7 @@ for msg in st.session_state.messages:
 
 # Chat input
 st.info("💡 For best results include: surface, tournament name, and both players' rankings. Example: 'Sinner rank 1 vs Alcaraz rank 3 at Wimbledon final on grass'")
-
+user_input = st.chat_input("e.g. Sinner vs Alcaraz at Wimbledon final on grass, who wins?")
 if user_input:
     st.session_state.messages.append({"role": "user", "content": user_input})
     with st.chat_message("user"):
