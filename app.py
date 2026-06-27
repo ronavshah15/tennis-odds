@@ -88,13 +88,19 @@ if user_input:
                 # Step 2: Generate detailed analysis
                 analysis_response = client.chat.completions.create(
                     model="llama-3.3-70b-versatile",
-                    messages=[{"role": "user", "content": f"""You are a professional tennis analyst. 
+                   messages=[{"role": "user", "content": f"""You are a professional tennis analyst.
                     The match is {data['p1_name']} vs {data['p2_name']} on {data['Surface']}.
                     Our model gives {data['p1_name']} a {p1_prob}% chance (odds {p1_odds}) and {data['p2_name']} a {p2_prob}% chance (odds {p2_odds}).
                     
-                    Write a short 3-4 sentence analysis covering:
-                    - Who is the favourite and why
-                    - How the surface affects this matchup
+                    STRICT RULES:
+                    - Only use facts explicitly provided to you above
+                    - Do NOT invent court numbers, venues, crowd details, or any specific facts not given
+                    - If you don't know something, do not mention it at all
+                    - Only reference the surface, player names, odds, and probabilities given
+                    
+                    Write a short 2-3 sentence analysis covering:
+                    - Who is the favourite and why based on the odds
+                    - How the {data['Surface']} surface affects this matchup
                     - A predicted scoreline
                     - One key factor that could swing the match
                     
