@@ -11,10 +11,10 @@ with open('tennis_model.pkl', 'rb') as f:
 st.title("🎾 ATP Tennis Odds Predictor")
 st.write("Type a match below and get betting odds instantly.")
 
-api_key = st.text_input("Enter your Groq API key", type="password")
+api_key = st.secrets["GROQ_API_KEY"]
 match_input = st.text_area("Describe the match", placeholder="e.g. Djokovic rank 1 vs Alcaraz rank 3, Roland Garros final on clay, Alcaraz leads h2h 3-2")
 
-if st.button("Get Odds") and api_key and match_input:
+if st.button("Get Odds") and match_input:
     with st.spinner("Calculating..."):
         client = Groq(api_key=api_key)
         
